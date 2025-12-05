@@ -26,7 +26,7 @@ class EnhancedPromptGenerator:
                  gemini_model="gemini-2.5-flash",
                  gemini_region="us-central1",
                  gemini_project="captioner-test-1017",
-                 gemini_credential_file="/data/rczhang/MIND-V/vlm_api/captioner-test-1017-b3fa56e15267.json"):
+                 gemini_credential_file="/data/rczhang/MIND-V/vlm_api/captioner.json"):
         """
         初始化增强提示词生成器
 
