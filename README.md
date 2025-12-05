@@ -3,8 +3,8 @@
 # MIND-V: Hierarchical Video Generation for Long-Horizon Robotic Manipulation with RL-based Physical Alignment
 
 
-**Ruicheng Zhang**¹\*<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
-**Mingyang Zhang**²\*<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+**Ruicheng Zhang**¹\*&nbsp;&nbsp;&nbsp;&nbsp;
+**Mingyang Zhang**²\*&nbsp;&nbsp;&nbsp;&nbsp;
 **Jun Zhou**¹†&nbsp;&nbsp;&nbsp;&nbsp;
 Zhangrui Guo³&nbsp;&nbsp;&nbsp;&nbsp;
 Xiaofan Liu³  
