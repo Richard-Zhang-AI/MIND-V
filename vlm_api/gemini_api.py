@@ -326,8 +326,8 @@ if __name__ == "__main__":
         chat_session.start_interactive_chat()
     else:
         # Original single Q&A example
-        prompt = "Describe the picture.这幅图片中含有几个牛油果？你能定位出右侧牛油果在图中的位置吗？请输出右侧的牛油果中心的(x,y)坐标，x和y分布为图片宽和高的比例（为0到1之间的小数），默认图片左上角为(0,0)，右下角为(1,1)。中文回答"
-        image_path = "/data/rczhang/MIND-V/demos/diverse_ood_objs/avocado.png"
+        prompt = "Describe the picture. How many avocados are there in this picture? Can you locate the position of the avocado on the right in the picture? Please output the (x, y) coordinates of the center of the avocado on the right, where x and y are the proportions of the width and height of the picture respectively (decimal numbers between 0 and 1). By default, the top-left corner of the picture is (0,0) and the bottom-right corner is (1,1)."
+        image_path = "/data/rczhang/MIND-V/demos/avocado.png"
 
         # Call the function with token usage information
         result = call_gemini_api(prompt=prompt, image_path=image_path, return_usage=True)
