@@ -1,20 +1,52 @@
+<div align="center">
+
 # MIND-V: Hierarchical Video Generation for Long-Horizon Robotic Manipulation with RL-based Physical Alignment
 
-**Version**
 
-Ruicheng Zhang¹\*, Mingyang Zhang²\*, Jun Zhou¹†, Zhangrui Guo³, Xiaofan Liu³,
-Zunnan Xu¹, Zhizhou Zhong⁴, Puxin Yan⁴, Haocheng Luo¹, Xiu Li¹†
+**Ruicheng Zhang¹\*** **Mingyang Zhang²\*** **Jun Zhou¹†** Zhangrui Guo³ Xiaofan Liu³ Zunnan Xu¹ Zhizhou Zhong⁴ Puxin Yan⁴ Haocheng Luo¹ **Xiu Li¹†**
 
-¹Tsinghua University ²China University of Geosciences
-³Sun Yat-sen University ⁴Hong Kong University of Science and Technology
-
-\*: Equal contribution  †: Corresponding authors
+¹Tsinghua University ²China University of Geosciences ³Sun Yat-sen University ⁴Hong Kong University of Science and Technology  
+\*Equal contribution †Corresponding authors
 
 
-## 🌟 Introduction
-🔥 **MIND-V** is a hierarchical framework that synthesizes physically plausible and logically coherent long-horizon robotic manipulation videos. Inspired by cognitive science, MIND-V bridges high-level reasoning with pixel-level synthesis through three core components: a Semantic Reasoning Hub (SRH), a Behavioral Semantic Bridge (BSB), and a Motor Video Generator (MVG). The framework employs Staged Visual Future Rollouts and RL-based Physical Foresight Coherence (PFC) optimization using V-JEPA world models for enhanced physical plausibility.
 
-![demo_video](docs/videos/teaser.mp4)
+[![arXiv](https://img.shields.io/badge/arXiv-2506.09985-b31b1b.svg)](https://arxiv.org/abs/2506.09985)
+[![HuggingFace Space](https://img.shields.io/badge/🤗_Demo-MIND--V-blue)](https://huggingface.co/spaces/Richard-Zhang-AI/MIND-V)
+
+
+
+### Abstract
+
+Embodied imitation learning is constrained by the scarcity of diverse, long-horizon robotic manipulation data. Existing video generation models for this domain are limited to synthesizing short clips of simple actions and often rely on manually defined trajectories. To this end, we introduce MIND-V, a hierarchical framework designed to synthesize physically plausible and logically coherent videos of long-horizon robotic manipulation. Inspired by cognitive science, MIND-V bridges high-level reasoning with pixel-level synthesis through three core components: a Semantic Reasoning Hub (SRH) that leverages a pre-trained vision-language model for task planning; a Behavioral Semantic Bridge (BSB) that translates abstract instructions into domain-invariant representations; and a Motor Video Generator (MVG) for conditional video rendering. MIND-V employs Staged Visual Future Rollouts, a test-time optimization strategy to enhance long-horizon robustness. To align the generated videos with physical laws, we introduce a GRPO reinforcement learning post-training phase guided by a novel Physical Foresight Coherence (PFC) reward. PFC leverages the V-JEPA world model to enforce physical plausibility by aligning the predicted and actual dynamic evolutions in the feature space. MIND-V demonstrates state-of-the-art performance in long-horizon robotic manipulation video generation, establishing a scalable and controllable paradigm for embodied data synthesis.
+
+### Comprehensive comparison of MIND-V against SOTA models for long-horizon robotic video generation
+
+<img src="assets/rada.png" width="88%"/>
+
+<br>
+
+### Long-Horizon Manipulation Demos
+
+<!-- 强制两个 GIF 完全等大对齐 -->
+<div align="center">
+  <img src="assets/long1.gif" width="48%" style="margin:0; padding:0; border:none;"/>
+  <img src="assets/long2.gif" width="48%" style="margin:0; padding:0; border:none;"/>
+</div>
+
+<br>
+
+### Overview of our hierarchical framework for long-horizon robotic manipulation video generation
+
+<img src="assets/pipeline.png" width="100%"/>
+
+<div align="center">
+  Beginning in the cognitive core, the <b>Semantic Reasoning Hub (SRH)</b> decomposes a high-level instruction into atomic sub-tasks and plans a detailed trajectory for each. These plans are then encapsulated into our novel <b>Behavioral Semantic Bridge (BSB)</b>, a structured, domain-invariant intermediate representation that serves as a precise blueprint for the <b>Motor Video Generator (MVG)</b>. The MVG, a conditional diffusion model, renders photorealistic videos that strictly adhere to the kinematic constraints defined in the BSB. At inference time, <b>Staged Visual Future Rollouts</b> provide a “propose-verify-refine” loop for self-correction, ensuring local optimality at each stage to mitigate error accumulation.
+</div>
+
+<br>
+
+</div>
+
 
 
 
@@ -30,7 +62,7 @@ pip install -r requirements.txt
 bash setup_MIND-V_env.sh
 ```
 
-Download models from [Model Download Guide](MODEL_DOWNLOAD_GUIDE.md) and place them under the base root. The checkpoints should be organized as follows:
+Download models from [download_models.sh](download_models.sh) and place them under the base root. The checkpoints should be organized as follows:
 
 ```
 ├── ckpts
@@ -40,6 +72,11 @@ Download models from [Model Download Guide](MODEL_DOWNLOAD_GUIDE.md) and place t
     ├── vjepa2                      (world models)
     └── affordance-r1               (semantic reasoning model)
 ```
+
+Model page: https://huggingface.co/Richard-Zhang-AI/MIND-V
+
+
+
 
 ### 2. Long-Horizon Video Generation
 
@@ -119,4 +156,8 @@ We sincerely thank the **RoboMaster** team for their pioneering work in robotic 
 - **Affordance-R1**: https://github.com/hq-King/Affordance-R1
 
 ---
+
+
+
+
 
