@@ -1,0 +1,121 @@
+# MIND-V Environment Dependencies for RoboVideo
+# Created for anonymous paper submission
+# Python 3.8+ recommended
+
+# Core Deep Learning Frameworks
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+diffusers>=0.24.0
+transformers>=4.35.0
+accelerate>=0.24.0
+peft>=0.7.0
+
+# Image and Video Processing
+Pillow>=9.5.0
+opencv-python>=4.8.0
+imageio>=2.31.0
+decord>=0.6.0
+matplotlib>=3.7.0
+tqdm>=4.66.0
+
+# Numerical Computing
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+
+# Vision and Model Libraries
+einops>=0.7.0
+clip-by-openai>=1.0
+supervision>=0.16.0
+ultralytics>=8.0.0
+loguru>=0.7.0
+
+# Configuration and Utilities
+omegaconf>=2.3.0
+pyyaml>=6.0
+fire>=0.5.0
+click>=8.1.0
+rich>=13.6.0
+
+# Web and API
+requests>=2.31.0
+google-generativeai>=0.3.0
+gradio>=4.0.0
+
+# Computer Vision Specific
+scikit-image>=0.21.0
+scikit-learn>=1.3.0
+opencv-contrib-python>=4.8.0
+
+# 3D and Geometry
+trimesh>=4.0.0
+open3d>=0.18.0
+
+# Video Processing
+moviepy>=1.0.3
+ffmpeg-python>=0.2.0
+
+# Image Quality and Metrics
+lpips>=0.1.4
+ssim-pil>=0.1.0
+piqa>=0.2.0
+
+# Model Optimization
+bitsandbytes>=0.41.0
+optimum>=1.16.0
+auto-gptq>=0.6.0
+
+# Development and Testing
+pytest>=7.4.0
+black>=23.9.0
+flake8>=6.1.0
+isort>=5.12.0
+
+# Data Handling
+h5py>=3.9.0
+zarr>=2.16.0
+dask>=2023.9.0
+
+# Visualization
+seaborn>=0.12.0
+plotly>=5.17.0
+wandb>=0.16.0  # Optional: for experiment tracking
+
+# Text Processing
+nltk>=3.8.0
+spacy>=3.7.0
+
+# System Monitoring
+psutil>=5.9.0
+GPUtil>=1.4.0
+
+# Network and Distributed
+tensorboard>=2.15.0
+tensorboardX>=2.6.0
+
+# Additional Utilities
+colorama>=0.4.6
+python-dateutil>=2.8.0
+pytz>=2023.3
+typing-extensions>=4.8.0
+
+# Optional: For specific model requirements
+# xformers>=0.0.22  # For memory efficient attention
+# flash-attn>=2.3.0  # For flash attention (requires CUDA)
+# apex>=0.1.0       # For mixed precision training
+
+# For SAM2 (Segmentation Model)
+# Note: You may need to install from source for latest features
+# pip install git+https://github.com/facebookresearch/segment-anything-2.git
+
+# For specific VLM and Video Generation models
+# Note: Some models may require custom installations
+
+# Development version requirements (uncomment if needed)
+# git+https://github.com/huggingface/diffusers.git
+# git+https://github.com/huggingface/transformers.git
+# git+https://github.com/facebookresearch/pytorch3d.git
+
+# GPU Memory Management
+# flash-attn --no-build-isolation  # Uncomment if using flash attention

@@ -1,0 +1,63 @@
+# 无用文件
+无用文件/
+
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Claude相关文件
+.claude/
+
+# 模型检查点和大型文件
+# 保留配置文件，但排除大型模型文件
+ckpts/*.cache/
+ckpts/**/*.cache/
+ckpts/**/model-*.safetensors
+ckpts/**/*.pt
+ckpts/**/optimizer.bin
+ckpts/**/random_states_*.pkl
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+
+# IDE和编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# 数据文件（可选，根据需要添加）
+*.npy
+*.npz
+*.json
+*.jsonl
+
+# 输出文件
+output/
+outputs/
+results/
+
+# 子模块的输出文件
+Affordance-R1/output/
+Affordance-R1/*.npy
+flow_grpo/logs/
+flow_grpo/**/logs/
+flow_grpo/checkpoints/
