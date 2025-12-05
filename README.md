@@ -134,7 +134,7 @@ python long_horizon_video_pipeline.py \
 
 ```bash
 cd scripts
-bash train_injector.sh
+bash train_sft.sh
 ```
 
 We fine-tune the base model on robotic manipulation videos with a resolution of 720×1280 and 49 frames using 8 H200 GPUs. The training process includes:
