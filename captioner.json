@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "captioner-test",
+    "private_key_id": "your key id",
+    "private_key": "your key",
+    "client_email": "XXX",
+    "client_id": "XXX",
+    "auth_uri": "XXX",
+    "token_uri": "XXX",
+    "auth_provider_x509_cert_url": "XXX",
+    "client_x509_cert_url": "XXX",
+    "universe_domain": "googleapis.com"
+  }
