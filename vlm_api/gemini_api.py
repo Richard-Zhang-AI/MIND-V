@@ -227,7 +227,7 @@ class GeminiChat:
         """Clear conversation history."""
         self.history = []
 
-def call_gemini_api(prompt, image_path=None, model="gemini-2.5-flash", region="us-central1", 
+def call_gemini_api(prompt, image_path=None, model="gemini-2.5-pro", region="us-central1", 
                     project="captioner-test", credential_file="captioner.json", 
                     temperature=0.1, seed=None, retry_attempts=5, return_usage=False):
     """
