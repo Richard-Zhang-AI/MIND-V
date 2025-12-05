@@ -11,7 +11,7 @@ from loguru import logger
 
 class GeminiChat:
     def __init__(self, model="gemini-2.5-flash", region="us-central1",
-                 project="captioner-test-1017", credential_file="captioner-test-1017-b3fa56e15267.json",
+                 project="captioner-test", credential_file="captioner.json",
                  temperature=0.1, seed=None):
         """
         Initialize a Gemini chat session for multi-turn conversations.
@@ -228,7 +228,7 @@ class GeminiChat:
         self.history = []
 
 def call_gemini_api(prompt, image_path=None, model="gemini-2.5-flash", region="us-central1", 
-                    project="captioner-test-1017", credential_file="captioner-test-1017-b3fa56e15267.json", 
+                    project="captioner-test", credential_file="captioner.json", 
                     temperature=0.1, seed=None, retry_attempts=5, return_usage=False):
     """
     Calls the Gemini API to generate a response for a given prompt, optionally with an image.
