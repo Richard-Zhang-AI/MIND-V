@@ -10,7 +10,7 @@ import typing
 from loguru import logger
 
 class GeminiChat:
-    def __init__(self, model="gemini-2.5-flash", region="us-central1",
+    def __init__(self, model="gemini-2.5-pro", region="us-central1",
                  project="captioner-test", credential_file="captioner.json",
                  temperature=0.1, seed=None):
         """
