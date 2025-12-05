@@ -3,16 +3,31 @@
 # MIND-V: Hierarchical Video Generation for Long-Horizon Robotic Manipulation with RL-based Physical Alignment
 
 
-**Ruicheng Zhang¹\*** **Mingyang Zhang²\*** **Jun Zhou¹†** Zhangrui Guo³ Xiaofan Liu³ Zunnan Xu¹ Zhizhou Zhong⁴ Puxin Yan⁴ Haocheng Luo¹ **Xiu Li¹†**
+**Ruicheng Zhang**¹\*<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+**Mingyang Zhang**²\*<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+**Jun Zhou**¹†&nbsp;&nbsp;&nbsp;&nbsp;
+Zhangrui Guo³&nbsp;&nbsp;&nbsp;&nbsp;
+Xiaofan Liu³  
 
-¹Tsinghua University ²China University of Geosciences ³Sun Yat-sen University ⁴Hong Kong University of Science and Technology  
-\*Equal contribution †Corresponding authors
+Zunnan Xu¹˒⁴<sup>‡</sup>&nbsp;&nbsp;&nbsp;&nbsp;
+Zhizhou Zhong⁵&nbsp;&nbsp;&nbsp;&nbsp;
+Puxin Yan⁵&nbsp;&nbsp;&nbsp;&nbsp;
+Haocheng Luo¹˒⁶&nbsp;&nbsp;&nbsp;&nbsp;
+**Xiu Li**¹†
 
+<sup>1</sup>Tsinghua University 
+<sup>2</sup>China University of Geosciences 
+<sup>3</sup>Sun Yat-sen University  
+<sup>4</sup>X Square Robot 
+<sup>5</sup>Hong Kong University of Science and Technology 
+<sup>6</sup>Central South University  
 
+\* Equal contribution † Corresponding authors ‡ Project Lead  
+
+<br>
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.09985-b31b1b.svg)](https://arxiv.org/abs/2506.09985)
-[![HuggingFace Space](https://img.shields.io/badge/🤗_Demo-MIND--V-blue)](https://huggingface.co/spaces/Richard-Zhang-AI/MIND-V)
-
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97_Model-MIND--V-FF6C37)](https://huggingface.co/Richard-Zhang-AI/MIND-V)
 
 
 ### Abstract
@@ -52,7 +67,7 @@ Embodied imitation learning is constrained by the scarcity of diverse, long-hori
 
 ## ⚙️ Quick Start
 
-### 1. Environment Setup
+### 1. Setup
 Our environment setup is compatible with CogVideoX. You can follow their configuration to complete the setup.
 
 ```bash
@@ -76,21 +91,30 @@ Download models from [download_models.sh](download_models.sh) and place them und
 Model page: https://huggingface.co/Richard-Zhang-AI/MIND-V
 
 
+**Required:** Configure your own Gemini API keyThe project uses Google Gemini (via service account) for visual captioning.Create a Google Cloud project and enable the Gemini API  
+```
+Create a service account → Create Key → JSON  
+Save the downloaded JSON as vlm_api/captioner.json
+```
+Example content (replace with your own values):
+```
+{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "private_key_id": "your-key-id",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY_HERE\n-----END PRIVATE KEY-----\n",
+  "client_email": "xxx@your-project.iam.gserviceaccount.com",
+  "client_id": "your-client-id",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/xxx%40your-project.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
+```
 
 
 ### 2. Long-Horizon Video Generation
-
-**Diverse Object Manipulation**
-
-```bash
-python long_horizon_video_pipeline.py \
-    --image "demos/diverse_ood_objs/avocado.png" \
-    --instruction "pick up the avocado" \
-    --output "output/diverse_objects" \
-    --seed 42
-```
-
-**Complex Multi-Step Tasks**
 
 ```bash
 python long_horizon_video_pipeline.py \
@@ -106,7 +130,7 @@ python long_horizon_video_pipeline.py \
 
 ### 3. Training
 
-#### Pre-training (Injector Training)
+#### Pre-training (Supervised Fine-Tuning)
 
 ```bash
 cd scripts
