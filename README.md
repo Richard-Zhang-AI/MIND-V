@@ -26,8 +26,8 @@ Haocheng Luo¹˒⁶&nbsp;&nbsp;&nbsp;&nbsp;
 
 <br>
 
-[![arXiv](https://img.shields.io/badge/arXiv-2506.09985-b31b1b.svg)](https://arxiv.org/abs/2506.09985)
-[![Model](https://img.shields.io/badge/%F0%9F%A4%97_Model-MIND--V-FF6C37)](https://huggingface.co/Richard-Zhang-AI/MIND-V)
+[![arXiv](https://img.shields.io/badge/arXiv-2506.09985-b31b1b.svg)]()
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97_Model-MIND--V-FF6C37)](https://huggingface.co/Richard-ZZZZZ/MIND-V)
 
 
 ### Abstract
@@ -88,7 +88,7 @@ Download models from [download_models.sh](download_models.sh) and place them und
     └── affordance-r1               (semantic reasoning model)
 ```
 
-Model page: https://huggingface.co/Richard-Zhang-AI/MIND-V
+Model page: https://huggingface.co/Richard-ZZZZZ/MIND-V
 
 
 **Required:** Configure your own Gemini API keyThe project uses Google Gemini (via service account) for visual captioning.Create a Google Cloud project and enable the Gemini API  
