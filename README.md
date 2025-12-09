@@ -26,7 +26,7 @@ Haocheng Luo¹˒⁶&nbsp;&nbsp;&nbsp;&nbsp;
 
 <br>
 
-[![arXiv](https://img.shields.io/badge/arXiv-2506.09985-b31b1b.svg)]()
+[![arXiv](https://img.shields.io/badge/arXiv-2512.06628-b31b1b.svg)](https://arxiv.org/pdf/2512.06628)
 [![Model](https://img.shields.io/badge/%F0%9F%A4%97_Model-MIND--V-FF6C37)](https://huggingface.co/Richard-ZZZZZ/MIND-V)
 
 
@@ -158,11 +158,14 @@ python flow_grpo/scripts/mindv_post_training.py \
 If you find this work helpful, please consider citing:
 
 ```bibtex
-@article{zhang2025mindv,
-  title={MIND-V: Hierarchical Video Generation for Long-Horizon Robotic Manipulation with RL-based Physical Alignment},
-  author={Zhang, Ruicheng and Zhang, Mingyang and Zhou, Jun and Guo, Zhangrui and Liu, Xiaofan and Xu, Zunnan and Zhong, Zhizhou and Yan, Puxin and Luo, Haocheng and Li, Xiu},
-  journal={arXiv preprint arXiv:2506.09985},
-  year={2025}
+@misc{zhang2025mindvhierarchicalvideogeneration,
+      title={MIND-V: Hierarchical Video Generation for Long-Horizon Robotic Manipulation with RL-based Physical Alignment}, 
+      author={Ruicheng Zhang and Mingyang Zhang and Jun Zhou and Zhangrui Guo and Xiaofan Liu and Zunnan Xu and Zhizhou Zhong and Puxin Yan and Haocheng Luo and Xiu Li},
+      year={2025},
+      eprint={2512.06628},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2512.06628}, 
 }
 ```
 
