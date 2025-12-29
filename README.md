@@ -68,7 +68,7 @@ Embodied imitation learning is constrained by the scarcity of diverse, long-hori
 ## ⚙️ Quick Start
 
 ### 1. Setup
-Our environment setup is compatible with CogVideoX. You can follow their configuration to complete the setup.
+Our environment setup is compatible with [CogVideoX 5B](https://github.com/THUDM/CogVideo). You can follow their configuration to complete the setup.
 
 ```bash
 conda create -n mindv python=3.10
@@ -88,10 +88,13 @@ Download models from [download_models.sh](download_models.sh) and place them und
     └── affordance-r1               (semantic reasoning model)
 ```
 
-Model page: https://huggingface.co/Richard-ZZZZZ/MIND-V
+Download models using huggingface-cli:
+```
+pip install "huggingface_hub[cli]"
+huggingface-cli download Richard-ZZZZZ/MIND-V --local-dir ./ckpts/MIND-V
+```
 
-
-**Required:** Configure your own Gemini API keyThe project uses Google Gemini (via service account) for visual captioning.Create a Google Cloud project and enable the Gemini API  
+**Required:** Configure your own Gemini API keyThe project uses [Google Gemini 2.5 Pro](https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/#gemini-2-5-thinking) (via service account) for visual captioning. Create a Google Cloud project and enable the Gemini API:  
 ```
 Create a service account → Create Key → JSON  
 Save the downloaded JSON as vlm_api/captioner.json
