@@ -87,7 +87,7 @@ Download models from [download_models.sh](download_models.sh) and place them und
     ├── vjepa2                      (world models)
     └── affordance-r1               (semantic reasoning model)
 ```
-
+The finetuned MIND-V checkpoints are available at https://huggingface.co/Richard-ZZZZZ/MIND-V/tree/main.
 Download models using huggingface-cli:
 ```
 pip install "huggingface_hub[cli]"
