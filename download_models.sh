@@ -11,7 +11,7 @@ echo "================================"
 # Create directories
 echo "📁 Creating directories..."
 mkdir -p ckpts/CogVideoX-Fun-V1.5-5b-InP
-mkdir -p ckpts/MIND_V
+mkdir -p ckpts/MIND-V
 mkdir -p ckpts/sam2
 mkdir -p ckpts/affordance-r1/huggingface
 mkdir -p ckpts/vjepa2
@@ -53,34 +53,28 @@ echo ""
 echo "🧠 Downloading V-JEPA2 World Models..."
 echo "======================================"
 
-# Download V-JEPA2 ViT-L/16 (300M parameters, 256px resolution)
 download_file "https://dl.fbaipublicfiles.com/vjepa2/vitl.pt" \
     "ckpts/vjepa2/vitl16_256px.pt" \
     "V-JEPA2 ViT-L/16 (300M) - 256px"
 
-# Download V-JEPA2 ViT-g/16 (1B parameters, best for PFC)
 download_file "https://dl.fbaipublicfiles.com/vjepa2/vitg.pt" \
     "ckpts/vjepa2/vitg16_256px.pt" \
     "V-JEPA2 ViT-g/16 (1B) - 256px"
 
-# Download V-JEPA2 ViT-g/16 384px (higher resolution for better accuracy)
 download_file "https://dl.fbaipublicfiles.com/vjepa2/vitg-384.pt" \
     "ckpts/vjepa2/vitg16_384px.pt" \
     "V-JEPA2 ViT-g/16 (1B) - 384px"
 
-# Download V-JEPA2 Action-Conditioned model (for robotics)
 download_file "https://dl.fbaipublicfiles.com/vjepa2/vjepa2-ac-vitg.pt" \
     "ckpts/vjepa2/vjepa2_ac_vitg.pt" \
     "V-JEPA2 Action-Conditioned (Robotics)"
 
 echo ""
 echo "🎯 Downloading V-JEPA2 Evaluation Probes..."
-# Download Something-Something v2 probe for motion understanding
 download_file "https://dl.fbaipublicfiles.com/vjepa2/evals/ssv2-vitg-384-64x2x3.pt" \
     "ckpts/vjepa2/ssv2_probe_vitg384.pt" \
     "V-JEPA2 SSV2 Evaluation Probe"
 
-# Download EK100 action anticipation probe
 download_file "https://dl.fbaipublicfiles.com/vjepa2/evals/ek100-vitg-384.pt" \
     "ckpts/vjepa2/ek100_probe_vitg384.pt" \
     "V-JEPA2 EK100 Action Anticipation Probe"
@@ -90,7 +84,6 @@ echo ""
 echo "🤖 Downloading Affordance-R1 Models..."
 echo "=================================="
 
-# Check for huggingface CLI for Affordance-R1
 if command -v huggingface-cli >/dev/null 2>&1; then
     echo ""
     echo "📥 Downloading Affordance-R1 using HuggingFace CLI..."
@@ -101,69 +94,68 @@ if command -v huggingface-cli >/dev/null 2>&1; then
 else
     echo ""
     echo "⚠️  huggingface-cli not found for Affordance-R1 download."
-    echo "Please install it: pip install huggingface_hub"
+    echo "Please install it: pip install \"huggingface_hub[cli]\""
     echo "Or download manually from: https://huggingface.co/hqking/affordance-r1"
-
-    # Manual download instructions for Affordance-R1
-    echo ""
-    echo "🔄 Alternative Affordance-R1 Download Methods:"
-    echo "1. Using Python:"
-    echo "   from huggingface_hub import snapshot_download"
-    echo "   snapshot_download('hqking/affordance-r1', "
-    echo "                   local_dir='ckpts/affordance-r1/huggingface')"
 fi
 
-# Download Qwen2.5-VL-7B base model for Affordance-R1 (if needed)
+# Download Qwen2.5-VL-7B base model for Affordance-R1
 echo ""
 echo "📝 Checking for Qwen2.5-VL-7B (required for Affordance-R1)..."
 if [ ! -d "ckpts/affordance-r1/qwen2.5-vl-7b" ]; then
-    echo "📥 Downloading Qwen2.5-VL-7B for Affordance-R1..."
     if command -v huggingface-cli >/dev/null 2>&1; then
+        echo "📥 Downloading Qwen2.5-VL-7B for Affordance-R1..."
         huggingface-cli download Qwen/Qwen2.5-VL-7B-Instruct \
             --local-dir ckpts/affordance-r1/qwen2.5-vl-7b \
             --local-dir-use-symlinks False
         echo "✅ Qwen2.5-VL-7B downloaded successfully!"
     else
-        echo "⚠️  Qwen2.5-VL-7B requires manual download:"
-        echo "   https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
+        echo "⚠️  huggingface-cli not found. Please install it."
+        echo "Manual download: https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct"
     fi
 else
     echo "✅ Qwen2.5-VL-7B already exists"
 fi
 
-# Check for huggingface CLI
+# Download CogVideoX
+echo ""
+echo "🎥 Downloading CogVideoX-Fun-V1.5-5b-InP..."
 if command -v huggingface-cli >/dev/null 2>&1; then
-    echo ""
-    echo "📥 Downloading CogVideoX model using HuggingFace CLI..."
     huggingface-cli download THUDM/CogVideoX-Fun-V1.5-5b-InP \
-        --local-dir ckpts/CogVideoX-Fun-V1.5-5b-Inp \
+        --local-dir ckpts/CogVideoX-Fun-V1.5-5b-InP \
         --local-dir-use-symlinks False
-
-    echo "✅ CogVideoX model downloaded successfully!"
+    echo "✅ CogVideoX downloaded successfully!"
 else
-    echo ""
-    echo "⚠️  huggingface-cli not found. Please install it:"
-    echo "   pip install huggingface_hub"
-    echo ""
-    echo "Or download manually from:"
-    echo "   https://huggingface.co/THUDM/CogVideoX-Fun-V1.5-5b-InP"
+    echo "⚠️  huggingface-cli not found."
+    echo "Please install: pip install \"huggingface_hub[cli]\""
+    echo "Or download manually: https://huggingface.co/THUDM/CogVideoX-Fun-V1.5-5b-InP"
 fi
 
-# MIND-V model (placeholder - needs actual URL)
+# Download MIND-V finetuned checkpoints
 echo ""
-echo "🤖 MIND-V Fine-tuned Model"
-echo "================================"
-echo "⚠️  MIND-V model download requires access to the trained weights."
-echo ""
-echo "Please:"
-echo "1. Contact the authors for model access"
-echo "2. Or train your own model using the provided training scripts"
-echo "3. Place the model files in: ckpts/MIND_V/"
-echo ""
-echo "Expected files in ckpts/MIND_V/:"
-echo "  - config.json"
-echo "  - diffusion_pytorch_model.bin"
-echo "  - [other model-specific files]"
+echo "🧠 Downloading MIND-V Fine-tuned Checkpoints"
+echo "============================================="
+echo "Repository: https://huggingface.co/Richard-ZZZZZ/MIND-V"
+
+if command -v huggingface-cli >/dev/null 2>&1; then
+    echo ""
+    echo "📥 Downloading MIND-V using HuggingFace CLI..."
+    huggingface-cli download Richard-ZZZZZ/MIND-V \
+        --local-dir ckpts/MIND-V \
+        --local-dir-use-symlinks False
+    echo "✅ MIND-V finetuned model downloaded successfully!"
+else
+    echo ""
+    echo "⚠️  huggingface-cli not found for MIND-V download."
+    echo "Please install it with:"
+    echo "   pip install \"huggingface_hub[cli]\""
+    echo ""
+    echo "Then run:"
+    echo "   huggingface-cli download Richard-ZZZZZ/MIND-V --local-dir ./ckpts/MIND-V"
+    echo ""
+    echo "Alternative (Python way):"
+    echo "   from huggingface_hub import snapshot_download"
+    echo "   snapshot_download(repo_id='Richard-ZZZZZ/MIND-V', local_dir='ckpts/MIND-V')"
+fi
 
 # Check disk space
 echo ""
@@ -174,28 +166,20 @@ echo "Available disk space: ${AVAILABLE_SPACE}GB"
 if [ "$AVAILABLE_SPACE" -lt 50 ]; then
     echo "⚠️  Warning: Less than 50GB available space."
     echo "   Models require ~47GB for complete setup."
-    echo "   Consider freeing up disk space."
 fi
 
-# File sizes and requirements
+# File sizes and requirements (updated MIND-V size estimate)
 echo ""
 echo "📋 Model Size Information:"
 echo "=========================="
 echo "SAM2 Tiny:                    ~100MB  ✅ Downloaded"
 echo "CogVideoX-5B:                 ~10GB"
-echo "MIND-V Fine-tuned:            ~15GB"
+echo "MIND-V Fine-tuned:            ~15GB   (estimated)"
 echo "V-JEPA2 Models:               ~8GB   ✅ Downloaded"
-echo "  - ViT-L/16 (300M):          ~1.2GB"
-echo "  - ViT-g/16 (1B):            ~3.8GB"
-echo "  - ViT-g/16 384px:           ~3.9GB"
-echo "  - Action-Conditioned:      ~3.9GB"
-echo "  - Evaluation Probes:       ~500MB"
 echo "Affordance-R1 Models:         ~14GB"
-echo "  - Main Model:              ~7GB"
-echo "  - Qwen2.5-VL-7B Base:       ~7GB"
 echo "Total Required:                ~47GB"
 
-# Verification script
+# Verification script (updated path for MIND-V)
 echo ""
 echo "🔍 Creating verification script..."
 cat > verify_models.py << 'EOF'
@@ -205,21 +189,19 @@ Verify that all required models are properly downloaded
 """
 
 import os
-import hashlib
 from pathlib import Path
 
 def check_model_exists(path, description):
-    """Check if a model file/directory exists"""
     if os.path.exists(path):
         if os.path.isfile(path):
             size = os.path.getsize(path) / (1024*1024)  # MB
             print(f"✅ {description}: {size:.1f} MB")
         elif os.path.isdir(path):
             files = list(Path(path).rglob('*'))
-            print(f"✅ {description}: {len(files)} files")
+            print(f"✅ {description}: {len(files)} files in directory")
         return True
     else:
-        print(f"❌ {description}: {path}")
+        print(f"❌ {description}: not found at {path}")
         return False
 
 def main():
@@ -228,8 +210,8 @@ def main():
 
     models = [
         ("ckpts/sam2/sam2.1_hiera_tiny.pt", "SAM2 Hiera Tiny"),
-        ("ckpts/CogVideoX-Fun-V1.5-5b-Inp", "CogVideoX Base"),
-        ("ckpts/MIND_V", "MIND-V Fine-tuned"),
+        ("ckpts/CogVideoX-Fun-V1.5-5b-InP", "CogVideoX Base"),
+        ("ckpts/MIND-V", "MIND-V Fine-tuned"),
         ("ckpts/vjepa2/vitl16_256px.pt", "V-JEPA2 ViT-L/16"),
         ("ckpts/vjepa2/vitg16_256px.pt", "V-JEPA2 ViT-g/16"),
         ("ckpts/vjepa2/vitg16_384px.pt", "V-JEPA2 ViT-g/16 384px"),
@@ -248,10 +230,10 @@ def main():
     print("\n" + "=" * 40)
     if all_exist:
         print("🎉 All models verified successfully!")
-        print("You can now run the quick_start.py script")
+        print("You can now run the inference / quick_start script")
     else:
         print("⚠️  Some models are missing")
-        print("Please run ./download_models.sh again")
+        print("Please re-run ./download_models.sh or check the error messages")
 
 if __name__ == "__main__":
     main()
@@ -264,47 +246,17 @@ echo "✅ Download script completed!"
 echo ""
 echo "📋 Summary:"
 echo "=========="
-echo "- SAM2 model: ✅ Downloaded"
-echo "- V-JEPA2 models: ✅ Downloaded"
-echo "- Affordance-R1 models: ⏳ Check huggingface-cli installation"
-echo "- CogVideoX model: ⏳ Check huggingface-cli installation"
-echo "- MIND-V model: ❌ Requires manual download"
+echo "- SAM2 model:               ✅ Downloaded"
+echo "- V-JEPA2 models:           ✅ Downloaded"
+echo "- Affordance-R1 models:     ⏳ Check huggingface-cli"
+echo "- CogVideoX model:          ⏳ Check huggingface-cli"
+echo "- MIND-V fine-tuned:        ⏳ Now supports huggingface-cli download"
 echo ""
 echo "📝 Next steps:"
-echo "1. Install huggingface-cli if not installed:"
-echo "   pip install huggingface_hub"
-echo ""
-echo "2. Run this script again if needed:"
-echo "   ./download_models.sh"
-echo ""
-echo "3. Download MIND-V model (see instructions above)"
-echo ""
-echo "4. Verify your setup:"
+echo "1. Install huggingface-cli if needed:"
+echo "   pip install \"huggingface_hub[cli]\""
+echo "2. Re-run this script if any part failed"
+echo "3. Verify models:"
 echo "   python verify_models.py"
-echo ""
-echo "5. Test your installation:"
-echo "   python quick_start.py"
-
-# Check if we need to show alternatives
-echo ""
-echo "🔄 Alternative Download Methods:"
-echo "==============================="
-echo ""
-echo "If huggingface-cli doesn't work, try:"
-echo ""
-echo "1. Using wget/curl manually:"
-echo "   wget https://huggingface.co/THUDM/CogVideoX-Fun-V1.5-5b-InP/resolve/main/config.json"
-echo "   # Download all required files"
-echo ""
-echo "2. Using Python:"
-echo "   from huggingface_hub import snapshot_download"
-echo "   snapshot_download('THUDM/CogVideoX-Fun-V1.5-5b-Inp', "
-echo "                   local_dir='ckpts/CogVideoX-Fun-V1.5-5b-Inp')"
-echo ""
-echo "3. Using ModelScope (for users in China):"
-echo "   pip install modelscope"
-echo "   from modelscope import snapshot_download"
-echo "   snapshot_download('THUDM/CogVideoX-Fun-V1.5-5b-InP')"
-
-echo ""
-echo "📚 For detailed instructions, see MODEL_DOWNLOAD.md"
+echo "4. Test:"
+echo "   python quick_start.py   (or your inference script)"
